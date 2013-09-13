@@ -36,7 +36,7 @@ public class ClientDao {
 				client.setPhone(rs.getString(5));
 				client.setEmail(rs.getString(6));
 				client.setName(rs.getString(7));
-				client.setAge(rs.getString(8));
+				client.setAge(Integer.parseInt(rs.getString(8)));
 				client.setSex(rs.getString(9));
 				client.setAddress(rs.getString(10));
 				client.setAmount(rs.getDouble(11));
@@ -68,7 +68,7 @@ public class ClientDao {
 				client.setPhone(rs.getString(5));
 				client.setEmail(rs.getString(6));
 				client.setName(rs.getString(7));
-				client.setAge(rs.getString(8));
+				client.setAge(Integer.parseInt(rs.getString(8)));
 				client.setSex(rs.getString(9));
 				client.setAddress(rs.getString(10));
 				client.setAmount(rs.getDouble(11));
@@ -106,7 +106,7 @@ public class ClientDao {
 	}
 
 	// 修改数据
-	public boolean update(Client client) {
+	/*public boolean update(Client client) {
 		String sql = "Update tb_client set name='" + client.getName()
 				+ "', address='" + airport.getAddress() + "' where id='"
 				+ airport.getId() + "'";
@@ -136,6 +136,6 @@ public class ClientDao {
 			return false;
 		}
 		return true;
-	}
+	}*/
 
 }
