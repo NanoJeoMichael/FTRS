@@ -1,5 +1,7 @@
 package ftrs.entity;
 
+import java.math.BigDecimal;
+
 public class Client {
 	private String id;
 	private ClientType clientType;
@@ -11,7 +13,7 @@ public class Client {
 	private int age;
 	private String sex;
 	private String address;
-	private double amount;
+	private BigDecimal amount;
 	
 	public String getId() {
 		return id;
@@ -74,10 +76,10 @@ public class Client {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 }

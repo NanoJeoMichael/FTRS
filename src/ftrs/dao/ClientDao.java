@@ -20,6 +20,7 @@ public class ClientDao {
 		String sql = "";
 		if (strif != "all" && strif != null && strif != "") {
 			sql = "select * from tb_client where " + strif + "";
+			System.out.println(sql);
 		} else {
 			sql = "select * from tb_client";
 		}
@@ -39,7 +40,7 @@ public class ClientDao {
 				client.setAge(Integer.parseInt(rs.getString(8)));
 				client.setSex(rs.getString(9));
 				client.setAddress(rs.getString(10));
-				client.setAmount(rs.getDouble(11));
+				client.setAmount(rs.getBigDecimal(11));
 				clients.add(client);
 			}
 		} catch (SQLException ex) {
@@ -51,9 +52,8 @@ public class ClientDao {
 
 	// 用于修改的查询
 	public Client queryM(Client client2) {
-		Client client = new Client();
-		String sql = "select * from tb_client where id=" + client2.getId()
-				+ "";
+		Client client = null;
+		String sql = "select * from tb_client where id=" + client2.getId() + "";
 		System.out.println("修改时的SQL：" + sql);
 		ResultSet rs = conn.executeQuery(sql);
 		try {
@@ -71,7 +71,7 @@ public class ClientDao {
 				client.setAge(Integer.parseInt(rs.getString(8)));
 				client.setSex(rs.getString(9));
 				client.setAddress(rs.getString(10));
-				client.setAmount(rs.getDouble(11));
+				client.setAmount(rs.getBigDecimal(11));
 			}
 		} catch (SQLException ex) {
 		}
@@ -83,19 +83,13 @@ public class ClientDao {
 	public boolean insert(Client client) {
 		String sql = "";
 		int falg = 0;
-		
-		sql = "Insert into tb_client values('" + client.getId() + "','" +
-				client.getClientType().getId() + "','"+
-				client.getIdNum() + "','"+
-				client.getPwd() + "','" +
-				client.getPhone() + "','"+
-				client.getEmail() + "','"+
-				client.getName() + "','"+
-				client.getAge() + "','"+
-				client.getSex() + "','"+
-				client.getAddress() + "','"+
-				client.getAmount() + "'" +
-				")";
+
+		sql = "Insert into tb_client values('" + client.getId() + "','"
+				+ client.getClientType().getId() + "','" + client.getIdNum()
+				+ "','" + client.getPwd() + "','" + client.getPhone() + "','"
+				+ client.getEmail() + "','" + client.getName() + "','"
+				+ client.getAge() + "','" + client.getSex() + "','"
+				+ client.getAddress() + "','" + client.getAmount() + "'" + ")";
 		falg = conn.executeUpdate(sql);
 		System.out.println("添加SQL：" + sql);
 		conn.close();
@@ -105,11 +99,28 @@ public class ClientDao {
 		return true;
 	}
 
+	public Client check(Client client) {
+		String sql = "id=" + "'" + client.getId() + "' or email='"
+				+ client.getEmail() + "' and pwd='" + client.getPwd() + "'";
+		System.out.println("check: " + sql);
+		@SuppressWarnings("unchecked")
+		ArrayList<Client> clients = (ArrayList<Client>) query(sql);
+		if (clients.size() == 0)
+			return null;
+		return clients.get(0);
+	}
+
 	// 修改数据
-	/*public boolean update(Client client) {
-		String sql = "Update tb_client set name='" + client.getName()
-				+ "', address='" + airport.getAddress() + "' where id='"
-				+ airport.getId() + "'";
+	public boolean update(Client client) {
+		String sql = "update tb_client set ct_id='"
+				+ client.getClientType().getId() + "',id_num='"
+				+ client.getIdNum() + "',pwd='" + client.getPwd() + "',phone='"
+				+ client.getPhone() + "',email='" + client.getEmail()
+				+ "',name='" + client.getName() + "',age='" + client.getAge()
+				+ "',sex='" + client.getSex() + "',address='"
+				+ client.getAddress() + "',amount='" + client.getAmount()
+				+ "' " + "where id='" + client.getId() + "'";
+
 		int falg = conn.executeUpdate(sql);
 		System.out.println("修改数据时的SQL：" + sql);
 		conn.close();
@@ -119,23 +130,22 @@ public class ClientDao {
 	}
 
 	// 删除数据
-	public boolean delete(Airport airport) {
-		String sql_1 = "SELECT * FROM tb_airport WHERE id="
-				+ airport.getId() + "";
+	public boolean delete(Client client) {
+		String sql_1 = "SELECT * FROM tb_airport WHERE id=" + client.getId()
+				+ "";
 		ResultSet rs = conn.executeQuery(sql_1);
 		try {
 			if (rs.next()) {
 				String sql = "Delete from tb_airport where id="
-						+ airport.getId() + "";
+						+ client.getId() + "";
 				conn.executeUpdate(sql);
 				System.out.println("删除时的SQL：" + sql);
-			}
-			else 
+			} else
 				return false;
 		} catch (Exception e) {
 			return false;
 		}
 		return true;
-	}*/
+	}
 
 }

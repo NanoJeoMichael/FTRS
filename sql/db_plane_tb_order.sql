@@ -34,8 +34,6 @@ CREATE TABLE `tb_order` (
   KEY `client_fk_idx` (`c_id`),
   KEY `order_fk_idx` (`cc_id`),
   KEY `tic_fk_idx` (`tic_id`),
-  CONSTRAINT `client_fk` FOREIGN KEY (`c_id`) REFERENCES `tb_client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `order_fk` FOREIGN KEY (`cc_id`) REFERENCES `tb_client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tic_fk` FOREIGN KEY (`tic_id`) REFERENCES `tb_ticket` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -58,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-13 11:05:05
+-- Dump completed on 2013-09-16 10:47:04

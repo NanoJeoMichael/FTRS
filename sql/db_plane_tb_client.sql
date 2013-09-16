@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `tb_client`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_client` (
   `id` varchar(30) NOT NULL,
-  `ct_id` varchar(7) NOT NULL,
+  `ct_id` varchar(7) DEFAULT NULL,
   `id_num` varchar(20) NOT NULL,
   `pwd` varchar(20) NOT NULL,
   `phone` varchar(16) NOT NULL,
@@ -46,6 +46,7 @@ CREATE TABLE `tb_client` (
 
 LOCK TABLES `tb_client` WRITE;
 /*!40000 ALTER TABLE `tb_client` DISABLE KEYS */;
+INSERT INTO `tb_client` VALUES ('001','123','430581199209075537','258456','13527443907','NanoJeoMichael@hotmail.com','Nano',22,'男','重庆理工大学',0.0),('1213','123','4156465','546465','4653153','456465','136541',21,'on','xxx',0.0),('13156','123','4165465','132456','56416146','465465','1634165',31,'on','213',0.0),('321','123','2341','1241','341243','312432','nano',21,'on','xxx',0.0),('nanomichael','123','430581199209075537','123456','15923214110','328846994@qq.com','Nano.Michael',21,'on','',0.0),('woca','123','314','8080','8008','0898-','蒋开建',43,'on','xxx',0.0);
 /*!40000 ALTER TABLE `tb_client` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-13 11:05:05
+-- Dump completed on 2013-09-16 10:47:04
