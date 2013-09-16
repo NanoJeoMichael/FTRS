@@ -152,5 +152,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="c_footer.jsp" %>
 </body>
 </html>

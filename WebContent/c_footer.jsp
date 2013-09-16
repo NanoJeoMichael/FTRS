@@ -1,6 +1,33 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="utf-8" language="java"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="JavaScript" type="text/javascript">
+		function test() {
+			/*var infoHeight = document.body.s
+			var infoHeight = document.getElementById("info").scrollHeight;
+			var bottomHeight = document.getElementById("bottom").scrollHeight;
+			var allHeight = document.documentElement.clientHeight;
+			var bottom = document.getElementById("bottom");
+			if ((infoHeight + bottomHeight) < allHeight) {
+				bottom.style.position = "absolute";
+				bottom.style.bottom = "0";
+			} else {
+				bottom.style.position = "";
+				bottom.style.bottom = "";
+			}*/
+			var infoHeight = document.body.scrollHeight;
+			var allHeight = document.documentElement.clientHeight;
+			var bottom = document.getElementById("zan-footer");
+			if (infoHeight = allHeight){
+				bottom.style.position = "absolute";
+				bottom.style.bottom = "0";
+			}
+			setTimeout(function() {
+				test();
+			}, 10);
+		}
+		test();
+	</script>
 </head>
 <div id="zan-footer">
 	<!-- Link -->
