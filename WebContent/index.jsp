@@ -7,6 +7,7 @@
 </head>
 <%
 session.setAttribute("loged", "false");
+session.setAttribute("client", null);
 response.sendRedirect("client.jsp");
 %>
 </html>

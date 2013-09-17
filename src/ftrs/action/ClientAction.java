@@ -78,6 +78,7 @@ public class ClientAction extends HttpServlet {
 		if (client2 != null) {
 			/********** 将用户名称保存到session中 ***********************************/
 			HttpSession session = request.getSession();
+			session.setAttribute("client", client2);
 			session.setAttribute("userName", client2.getName());
 			session.setAttribute("loged", "true");
 			/***********************************************************************************/
