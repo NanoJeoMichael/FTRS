@@ -15,10 +15,10 @@
 			<li class=""><a href="#profile" data-toggle="tab"><i
 					class="icon-cogs"></i>&nbsp;&nbsp;我的账户</a></li>
 			<li class=""><a href="#setting" data-toggle="tab"><i
-					class="icon-wrench icon-black"></i>&nbsp;&nbsp;重要设置</a></li>
-			<li class="active"><a href="#record" data-toggle="tab"><i
-					class="icon-plane icon-black"></i>&nbsp;&nbsp;消费记录</a></li>
-			<li class=""><a href="#" data-toggle="tab"><i
+					class="icon-wrench"></i>&nbsp;&nbsp;重要设置</a></li>
+			<li class=""><a href="#record" data-toggle="tab"><i
+					class="icon-plane"></i>&nbsp;&nbsp;消费记录</a></li>
+			<li class="active"><a href="#bills" data-toggle="tab"><i
 					class="icon-tags"></i>&nbsp;&nbsp;我的账单</a></li>
 		</ul>
 		<div class="tab-content offset1 span11">
@@ -236,6 +236,7 @@
 					</div>
 				</div>
 			</div>
+			<!-- 重要设置 -->
 			<div class="tab-pane" id="setting">
 				<div class="boxed-group">
 					<h3>更改密码</h3>
@@ -293,9 +294,9 @@
 					<div class="boxed-group-inner">
 						<div style="padding-top: 10px;">
 							<ul>
-								<li><span class="badge badge-important">你当前的Email：<%=((Client)session.getAttribute("client")).getEmail()%></span></li>
+								<li><span class="badge badge-important">你当前的Email：<%=((Client) session.getAttribute("client")).getEmail()%></span></li>
 								<li class="divider"></li>
-								<li style="padding-top:10px"><p>你可以更改你的邮箱，以便你收到我们的信息：</p></li>
+								<li style="padding-top: 10px"><p>你可以更改你的邮箱，以便你收到我们的信息：</p></li>
 								<li>
 									<form class="form-horizontal">
 										<fieldset>
@@ -318,8 +319,122 @@
 					</div>
 				</div>
 			</div>
-			<div class="tab-pane active" id="record">
-				<p>What up girl, this is Section C.</p>
+			<!-- 消费记录 -->
+			<div class="tab-pane" id="record">
+				<div class="boxed-group">
+					<h3>我的消费</h3>
+					<p class="text-center" style="padding-top:10px">选择一项你的消费记录，点击查看明细以查看你的详细消费记录</p>
+					<div class="boxed-group-inner">
+						<table class="table table-hover table-striped table-condensed">
+							<thead>
+								<tr>
+									<th>选择</th>
+									<th>时间</th>
+									<th>出发时间</th>
+									<th>起降机场</th>
+									<th>消费金额</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input name="select" type="radio" /></td>
+									<td>TB - Monthly</td>
+									<td>01/04/2012</td>
+									<td>
+										<div>
+											重庆江北机场
+										</div>
+										<div><small>南苑机场</small></div>
+									</td>
+									<td>0.0</td>
+								</tr>
+								<tr class="success">
+									<td><input name="select" type="radio" /></td>
+									<td>TB - Monthly</td>
+									<td>01/04/2012</td>
+									<td>Approved</td>
+									<td>0.0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="text-right" style="padding-top:10px; padding-right:10px">
+						<button type="button" class="btn btn-success btn-mini">查看明细</button>
+					</div>
+					<div class="text-center">
+						<div class="pagination pagination-mini">
+							<ul>
+								<li><a href="#">上一页</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">下一页</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 订单信息 -->
+			<div class="tab-pane active" id="bills">
+				<div class="boxed-group dangerzone">
+					<h3>我的订单</h3>
+					<p style="padding-top: 10px" class="text-center">
+						请尽快前往指定地点取票，如果没有在<strong>到期时间</strong>之前将票取出，系统将取消你的订单。
+					</p>
+					<div class="boxed-group-inner">
+						<table class="table table-condensed table-hover table-striped">
+							<thead>
+								<tr>
+									<th>乘机人身份证</th>
+									<th>出发/到期时间</th>
+									<th>航班</th>
+									<th>状态</th>
+									<th>折扣</th>
+									<th>金额</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>430581199209075537</td>
+									<td>
+										<div>2013-9-10</div>
+										<div>
+											<small>2013-9-20</small>
+										</div>
+									</td>
+									<td><a href="#">A815</a></td>
+									<td>未取</td>
+									<td>常价</td>
+									<td>¥<strong>888</strong></td>
+									<td>
+										<div>
+											<a class="btn btn-danger btn-mini">退票</a>
+										</div>
+										<div>
+											<a class="btn btn-warning btn-mini">改签</a>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="text-center">
+						<div class="pagination pagination-mini">
+							<ul>
+								<li><a href="#">上一页</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">下一页</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
