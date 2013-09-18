@@ -1,11 +1,11 @@
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import ftrs.dao.AirportDao;
 import ftrs.dao.ClientDao;
 import ftrs.entity.Airport;
 import ftrs.entity.Client;
-import ftrs.entity.ClientType;
 
 public class Test {
 	public static void testAirport() {
@@ -55,22 +55,16 @@ public class Test {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void testClient() {
 		// set
 		Client client = new Client();
 		client.setId("001");
 		client.setName("Nano.Michael");
-		client.setAddress("重庆理工大学");
-		client.setAge(21);
 		client.setEmail("NanoJeoMichael@hotmail.com");
-		client.setPhone("13527443907");
-		client.setIdNum("430581199209075537");
+		client.setBirDate(new Date(2013, 9, 10));
 		client.setPwd("258456");
 		client.setSex("男");
-		client.setAmount(new BigDecimal(0));
-		ClientType ct = new ClientType();
-		ct.setId("123");
-		client.setClientType(ct);
 		// query
 		ClientDao clientDao = new ClientDao();
 		ArrayList<Client> clients = (ArrayList<Client>) clientDao.query("");
@@ -84,11 +78,19 @@ public class Test {
 		} else {
 			System.out.println("Insert failure!");
 		}
+		//update
+		client.setId("123");
+		if (clientDao.update("001", client)){
+			System.out.println("update success.");
+		} else {
+			System.out.println("update failure.");
+		}
 		// query
 		clients = (ArrayList<Client>) clientDao.query("");
 		for (int i = 0; i < clients.size(); i++) {
-			System.out.println(client.getName());
-			System.out.println(client.getSex());
+			System.out.println(clients.get(i).getName());
+			System.out.println(clients.get(i).getSex());
+			System.out.println(clients.get(i).getEmail());
 		}
 	}
 

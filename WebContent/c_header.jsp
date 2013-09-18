@@ -6,6 +6,43 @@
 %>
 <!DOCTYPE html>
 <html>
+<head>
+<script type="text/javascript">
+	function checkRegist() {
+		if (form1.name.value == "") {
+			var x = document.getElementById("rname");
+			form1.name.placeholder="昵称不能为空";
+			x.className += " error";
+			return false;
+		}
+		if (form1.pwd.value == "") {
+			var x = document.getElementById("rpwd");
+			form1.pwd.placeholder="密码不能为空";
+			x.className += " error";
+			return false;
+		}
+		if (form1.pwdConfirm.value == "") {
+			var x = document.getElementById("rcpwd");
+			form1.pwdConfirm.placeholder="请确认你的密码";
+			x.className += " error";
+			return false;
+		}
+		if (form1.email.value=="") {
+			var x = document.getElementById("remail");
+			form1.email.placeholder="邮箱不能为空";
+			x.className += " error";
+			return false;
+		}
+		if (form1.birthDay.value==""){
+			var x = document.getElementById("rdate");
+			form1.birthDay.placeholder="生日不能为空";
+			x.className += " error";
+			return false;
+		}
+		
+	}
+</script>
+</head>
 <body>
 	<%@ include file="msgBox.jsp"%>
 	<!-- 导航条 -->
@@ -86,7 +123,6 @@
 						</div>
 					</div>
 					<div class="control-group">
-
 						<!-- Prepended text-->
 						<label class="control-label">密码</label>
 						<div class="controls">
@@ -122,119 +158,86 @@
 		</div>
 		<div class="modal-body">
 			<form class="form-horizontal" action="ClientAction?action=regist"
-				method="post">
+				method="post" name="form1">
 				<fieldset>
-					<div class="control-group">
+					<!-- 用户名 -->
+					<div class="control-group" id="ruser">
 						<!-- Prepended text-->
 						<label class="control-label">用户名</label>
 						<div class="controls">
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-user"></i></span> <input
-									class="span3" name="id" placeholder="用户名" id="prependedInput"
+									class="span3" name="id" placeholder="为任意字符" id="prependedInput"
 									type="text">
 							</div>
-							<p class="help-block">*必填项，为任意字符</p>
 						</div>
-
 					</div>
-					<div class="control-group">
-						<!-- Prepended text-->
-						<label class="control-label">身份证</label>
-						<div class="controls">
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-user-md"></i></span> <input
-									class="span3" name="idNum" placeholder="身份证号码"
-									id="prependedInput" type="text">
-							</div>
-							<p class="help-block">*必填,让我们知道你是谁吧</p>
-						</div>
-
-					</div>
-					<div class="control-group">
+					<!-- 密码 -->
+					<div class="control-group" id="rpwd">
 						<!-- Prepended text-->
 						<label class="control-label">密码</label>
 						<div class="controls">
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-key"></i></span> <input
-									class="span3" name="pwd" placeholder="密码" id="prependedInput"
-									type="text">
+									class="span3" name="pwd" placeholder="至少8位任意字符"
+									id="prependedInput" type="password">
 							</div>
 						</div>
-
 					</div>
-					<div class="control-group">
+					<!-- 确认密码 -->
+					<div class="control-group" id="rcpwd">
 						<!-- Prepended text-->
 						<label class="control-label">确认密码</label>
 						<div class="controls">
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-key"></i></span> <input
-									class="span3" name="pwd" placeholder="确认密码" id="prependedInput"
-									type="text">
-							</div>
-							<p class="help-block">*确认你的密码</p>
-						</div>
-					</div>
-					<div class="control-group">
-
-						<!-- Prepended text-->
-						<label class="control-label">手机号</label>
-						<div class="controls">
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-mobile-phone"></i></span> <input
-									class="span3" name="phone" placeholder="手机号码"
-									id="prependedInput" type="text"
-									onkeyup="this.value=this.value.replace(/\D/g,'')"
-									onafterpaste="this.value=this.value.replace(/\D/g,'')">
+									class="span3" name="pwdConfrim" placeholder="确认密码"
+									id="prependedInput" type="password">
 							</div>
 						</div>
-
 					</div>
-
-					<div class="control-group">
-
+					<!-- 邮箱 -->
+					<div class="control-group" id="remail">
 						<!-- Prepended text-->
 						<label class="control-label">邮箱</label>
 						<div class="controls">
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-envelope"></i></span> <input
-									class="span3" name="email" placeholder="邮箱" id="prependedInput"
-									type="email">
+									class="span3" name="email" placeholder="你的常用邮箱"
+									id="prependedInput" type="email">
 							</div>
 						</div>
-
 					</div>
-
-					<div class="control-group">
-
+					<!-- 昵称 -->
+					<div class="control-group" id="rname">
 						<!-- Prepended text-->
 						<label class="control-label">昵称</label>
 						<div class="controls">
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-book"></i></span> <input
-									class="span3" name="name" placeholder="昵称" id="prependedInput"
-									type="text">
+									class="span3" name="name" placeholder="将用这个昵称显示你的信息"
+									id="prependedInput" type="text">
 							</div>
-							<p class="help-block">*给自己取个漂亮的昵称吧</p>
 						</div>
-
 					</div>
-
-					<div class="control-group">
+					<!-- 出生日期 -->
+					<div class="control-group" id="rdate">
 						<!-- Prepended text-->
 						<label class="control-label">出生日期</label>
 						<div class="controls">
 							<div class="input-append date form_datetime">
-								<input class="span3" type="text" value="" readonly> <span
-									class="add-on"><i class="icon-th"></i></span>
+								<input class="span3" type="text" value="" readonly
+									name="birthDay"> <span class="add-on"><i
+									class="icon-th"></i></span>
 							</div>
 							<script type="text/javascript">
 								$(".form_datetime").datetimepicker({
-									format : "dd MM yyyy"
+									format : "yyyy-mm-dd"
 								});
 							</script>
 						</div>
 					</div>
-
+					<!-- 性别 -->
 					<div class="control-group">
 						<label class="control-label">性别</label>
 						<div class="controls">
@@ -248,36 +251,23 @@
 							</label>
 						</div>
 					</div>
-
-					<div class="control-group">
-						<!-- Prepended text-->
-						<label class="control-label">地址</label>
-						<div class="controls">
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-road"></i></span> <input
-									class="span3" name="address" placeholder="您的地址"
-									id="prependedInput" type="text">
-							</div>
-						</div>
-
-					</div>
-
-					<div class="control-group">
+					<!-- 许可条款 -->
+					<div class="control-group" id="rok">
 						<label class="control-label"></label>
 						<!-- Multiple Checkboxes -->
 						<div class="controls">
 							<!-- Inline Checkboxes -->
-							<label class="checkbox inline"> <input type="checkbox"
-								id="check" value="我已阅读并同意许可条款"> 我已阅读并同意许可条款
+							<label class="checkbox inline"> <input type="checkbox" name="agree"
+								value="我已阅读并同意许可条款"> 我已阅读并同意许可条款
 							</label>
 						</div>
 					</div>
+					<!-- 注册 -->
 					<div class="control-group">
 						<label class="control-label"></label>
-
 						<!-- Button -->
 						<div class="controls">
-							<button type="submit" class="btn btn-success">注册</button>
+							<button id="registBtn" type="submit" onclick="return checkRegist()" class="btn btn-success">注册</button>
 						</div>
 					</div>
 				</fieldset>

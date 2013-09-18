@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `db_plane` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `db_plane`;
+CREATE DATABASE  IF NOT EXISTS `ftrs` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ftrs`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: db_plane
+-- Host: 127.0.0.1    Database: ftrs
 -- ------------------------------------------------------
 -- Server version	5.6.10
 
@@ -18,30 +18,27 @@ USE `db_plane`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tb_employee`
+-- Table structure for table `airport`
 --
 
-DROP TABLE IF EXISTS `tb_employee`;
+DROP TABLE IF EXISTS `airport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_employee` (
-  `id` varchar(30) NOT NULL,
-  `type` varchar(7) NOT NULL,
-  `pwd` varchar(20) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `type_fk_idx` (`type`),
-  CONSTRAINT `type_fk` FOREIGN KEY (`type`) REFERENCES `tb_employee_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `airport` (
+  `id` int(20) NOT NULL,
+  `name` varchar(256) DEFAULT NULL,
+  `location` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_employee`
+-- Dumping data for table `airport`
 --
 
-LOCK TABLES `tb_employee` WRITE;
-/*!40000 ALTER TABLE `tb_employee` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_employee` ENABLE KEYS */;
+LOCK TABLES `airport` WRITE;
+/*!40000 ALTER TABLE `airport` DISABLE KEYS */;
+/*!40000 ALTER TABLE `airport` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-16 10:47:04
+-- Dump completed on 2013-09-18 11:05:02

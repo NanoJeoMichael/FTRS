@@ -323,7 +323,7 @@
 			<div class="tab-pane" id="record">
 				<div class="boxed-group">
 					<h3>我的消费</h3>
-					<p class="text-center" style="padding-top:10px">选择一项你的消费记录，点击查看明细以查看你的详细消费记录</p>
+					<p class="text-center" style="padding-top: 10px">选择一项你的消费记录，点击查看明细以查看你的详细消费记录</p>
 					<div class="boxed-group-inner">
 						<table class="table table-hover table-striped table-condensed">
 							<thead>
@@ -341,10 +341,10 @@
 									<td>TB - Monthly</td>
 									<td>01/04/2012</td>
 									<td>
+										<div>重庆江北机场</div>
 										<div>
-											重庆江北机场
+											<small>南苑机场</small>
 										</div>
-										<div><small>南苑机场</small></div>
 									</td>
 									<td>0.0</td>
 								</tr>
@@ -358,7 +358,8 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="text-right" style="padding-top:10px; padding-right:10px">
+					<div class="text-right"
+						style="padding-top: 10px; padding-right: 10px">
 						<button type="button" class="btn btn-success btn-mini">查看明细</button>
 					</div>
 					<div class="text-center">
@@ -380,46 +381,50 @@
 			<div class="tab-pane active" id="bills">
 				<div class="boxed-group dangerzone">
 					<h3>我的订单</h3>
-					<p style="padding-top: 10px" class="text-center">
-						请尽快前往指定地点取票，如果没有在<strong>到期时间</strong>之前将票取出，系统将取消你的订单。
+					<p
+						style="padding-top: 10px; padding-right: 10px; padding-left: 10px">
+						&nbsp;&nbsp;请尽快前往指定地点取票，如果没有在<strong>到期时间</strong>之前将票取出，系统将取消你的订单。
+						你也可以点击<strong>选择</strong>然后点击
+						<strong>退票</strong>
+						或者<strong>改签</strong> 进行相应的操作
 					</p>
 					<div class="boxed-group-inner">
 						<table class="table table-condensed table-hover table-striped">
 							<thead>
 								<tr>
+									<th>选择</th>
 									<th>乘机人身份证</th>
-									<th>出发/到期时间</th>
+									<th>出发时间</th>
+									<th>到期时间</th>
 									<th>航班</th>
 									<th>状态</th>
 									<th>折扣</th>
 									<th>金额</th>
-									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
+									<td><input type="radio"></td>
 									<td>430581199209075537</td>
 									<td>
-										<div>2013-9-10</div>
-										<div>
-											<small>2013-9-20</small>
-										</div>
+										2013-9-10
 									</td>
+									<td><div style="color:red">2013-9-20</div></td>
 									<td><a href="#">A815</a></td>
 									<td>未取</td>
 									<td>常价</td>
 									<td>¥<strong>888</strong></td>
-									<td>
-										<div>
-											<a class="btn btn-danger btn-mini">退票</a>
-										</div>
-										<div>
-											<a class="btn btn-warning btn-mini">改签</a>
-										</div>
-									</td>
 								</tr>
 							</tbody>
 						</table>
+					</div>
+					<div>
+						<div class="text-right"
+							style="padding-top: 10px; padding-right: 10px">
+							<a class="btn btn-info btn-mini">修改</a>
+							<a class="btn btn-danger btn-mini">退票</a> <a
+								class="btn btn-warning btn-mini">改签</a>
+						</div>
 					</div>
 					<div class="text-center">
 						<div class="pagination pagination-mini">

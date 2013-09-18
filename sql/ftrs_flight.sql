@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `db_plane` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `db_plane`;
+CREATE DATABASE  IF NOT EXISTS `ftrs` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ftrs`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: db_plane
+-- Host: 127.0.0.1    Database: ftrs
 -- ------------------------------------------------------
 -- Server version	5.6.10
 
@@ -18,30 +18,37 @@ USE `db_plane`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tb_schedule`
+-- Table structure for table `flight`
 --
 
-DROP TABLE IF EXISTS `tb_schedule`;
+DROP TABLE IF EXISTS `flight`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_schedule` (
-  `id` varchar(30) NOT NULL,
-  `flight_id` varchar(10) DEFAULT NULL,
-  `she_time` time DEFAULT NULL,
-  `she_status` varchar(40) DEFAULT NULL,
+CREATE TABLE `flight` (
+  `id` varchar(20) NOT NULL,
+  `goTime` time DEFAULT NULL,
+  `reachTime` time DEFAULT NULL,
+  `type` varchar(256) DEFAULT NULL,
+  `reach_airport` int(20) NOT NULL,
+  `go_airport` int(20) NOT NULL,
+  `company_id` int(20) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fl_fk_idx` (`flight_id`),
-  CONSTRAINT `fl_fk` FOREIGN KEY (`flight_id`) REFERENCES `tb_flight` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_flight_airport1_idx` (`reach_airport`),
+  KEY `fk_flight_airport2_idx` (`go_airport`),
+  KEY `fk_flight_company1_idx` (`company_id`),
+  CONSTRAINT `fk_flight_airport1` FOREIGN KEY (`reach_airport`) REFERENCES `airport` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_flight_airport2` FOREIGN KEY (`go_airport`) REFERENCES `airport` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_flight_company1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_schedule`
+-- Dumping data for table `flight`
 --
 
-LOCK TABLES `tb_schedule` WRITE;
-/*!40000 ALTER TABLE `tb_schedule` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_schedule` ENABLE KEYS */;
+LOCK TABLES `flight` WRITE;
+/*!40000 ALTER TABLE `flight` DISABLE KEYS */;
+/*!40000 ALTER TABLE `flight` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-16 10:47:04
+-- Dump completed on 2013-09-18 11:05:01

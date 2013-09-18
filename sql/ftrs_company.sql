@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `db_plane` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `db_plane`;
+CREATE DATABASE  IF NOT EXISTS `ftrs` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ftrs`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: db_plane
+-- Host: 127.0.0.1    Database: ftrs
 -- ------------------------------------------------------
 -- Server version	5.6.10
 
@@ -18,27 +18,26 @@ USE `db_plane`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tb_client_type`
+-- Table structure for table `company`
 --
 
-DROP TABLE IF EXISTS `tb_client_type`;
+DROP TABLE IF EXISTS `company`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_client_type` (
-  `id` varchar(7) NOT NULL,
-  `name` varchar(40) DEFAULT NULL,
-  `remark` varchar(256) DEFAULT NULL,
+CREATE TABLE `company` (
+  `id` int(20) NOT NULL,
+  `name` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_client_type`
+-- Dumping data for table `company`
 --
 
-LOCK TABLES `tb_client_type` WRITE;
-/*!40000 ALTER TABLE `tb_client_type` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_client_type` ENABLE KEYS */;
+LOCK TABLES `company` WRITE;
+/*!40000 ALTER TABLE `company` DISABLE KEYS */;
+/*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-16 10:47:05
+-- Dump completed on 2013-09-18 11:05:01

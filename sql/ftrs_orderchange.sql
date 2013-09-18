@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `db_plane` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `db_plane`;
+CREATE DATABASE  IF NOT EXISTS `ftrs` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ftrs`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: db_plane
+-- Host: 127.0.0.1    Database: ftrs
 -- ------------------------------------------------------
 -- Server version	5.6.10
 
@@ -18,33 +18,33 @@ USE `db_plane`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tb_order`
+-- Table structure for table `orderchange`
 --
 
-DROP TABLE IF EXISTS `tb_order`;
+DROP TABLE IF EXISTS `orderchange`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_order` (
-  `id` varchar(30) NOT NULL,
-  `c_id` varchar(30) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `cc_id` varchar(20) DEFAULT NULL,
-  `tic_id` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `client_fk_idx` (`c_id`),
-  KEY `order_fk_idx` (`cc_id`),
-  KEY `tic_fk_idx` (`tic_id`),
-  CONSTRAINT `tic_fk` FOREIGN KEY (`tic_id`) REFERENCES `tb_ticket` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `orderchange` (
+  `client_id` varchar(30) NOT NULL,
+  `order_ticket_id` varchar(100) NOT NULL,
+  `changeTime` datetime NOT NULL,
+  `changeType` varchar(10) DEFAULT NULL,
+  `remark` text,
+  PRIMARY KEY (`changeTime`,`client_id`,`order_ticket_id`),
+  KEY `fk_orderChange_client1_idx` (`client_id`),
+  KEY `fk_orderChange_order1_idx` (`order_ticket_id`),
+  CONSTRAINT `fk_orderChange_client1` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_orderChange_order1` FOREIGN KEY (`order_ticket_id`) REFERENCES `order` (`ticket_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_order`
+-- Dumping data for table `orderchange`
 --
 
-LOCK TABLES `tb_order` WRITE;
-/*!40000 ALTER TABLE `tb_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_order` ENABLE KEYS */;
+LOCK TABLES `orderchange` WRITE;
+/*!40000 ALTER TABLE `orderchange` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderchange` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-16 10:47:04
+-- Dump completed on 2013-09-18 11:05:02

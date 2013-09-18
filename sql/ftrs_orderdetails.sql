@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `db_plane` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `db_plane`;
+CREATE DATABASE  IF NOT EXISTS `ftrs` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ftrs`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: db_plane
+-- Host: 127.0.0.1    Database: ftrs
 -- ------------------------------------------------------
 -- Server version	5.6.10
 
@@ -18,27 +18,33 @@ USE `db_plane`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tb_company`
+-- Table structure for table `orderdetails`
 --
 
-DROP TABLE IF EXISTS `tb_company`;
+DROP TABLE IF EXISTS `orderdetails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_company` (
-  `id` varchar(10) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `orderdetails` (
+  `order_ticket_id` varchar(100) NOT NULL,
+  `addTime` datetime DEFAULT NULL,
+  `stockTime` datetime DEFAULT NULL,
+  `dueTime` datetime DEFAULT NULL,
+  `settleMoney` decimal(10,0) DEFAULT NULL,
+  `discount` float DEFAULT NULL,
+  `remark` text,
+  PRIMARY KEY (`order_ticket_id`),
+  KEY `fk_orderDetails_order1_idx` (`order_ticket_id`),
+  CONSTRAINT `fk_orderDetails_order1` FOREIGN KEY (`order_ticket_id`) REFERENCES `order` (`ticket_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_company`
+-- Dumping data for table `orderdetails`
 --
 
-LOCK TABLES `tb_company` WRITE;
-/*!40000 ALTER TABLE `tb_company` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_company` ENABLE KEYS */;
+LOCK TABLES `orderdetails` WRITE;
+/*!40000 ALTER TABLE `orderdetails` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderdetails` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-16 10:47:04
+-- Dump completed on 2013-09-18 11:05:02

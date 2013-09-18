@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import ftrs.entity.Client;
-import ftrs.entity.ClientType;
 import ftrs.tools.ConnectDB;
 
 public class ClientDao {
@@ -19,28 +18,21 @@ public class ClientDao {
 		Collection clients = new ArrayList<Client>();
 		String sql = "";
 		if (strif != "all" && strif != null && strif != "") {
-			sql = "select * from tb_client where " + strif + "";
+			sql = "select * from client where " + strif + "";
 			System.out.println(sql);
 		} else {
-			sql = "select * from tb_client";
+			sql = "select * from client";
 		}
 		ResultSet rs = conn.executeQuery(sql);
 		try {
 			while (rs.next()) {
 				client = new Client();
 				client.setId(rs.getString(1));
-				ClientType ct = new ClientType();
-				ct.setId(rs.getString(2));
-				client.setClientType(ct);
-				client.setIdNum(rs.getString(3));
-				client.setPwd(rs.getString(4));
-				client.setPhone(rs.getString(5));
-				client.setEmail(rs.getString(6));
-				client.setName(rs.getString(7));
-				client.setAge(Integer.parseInt(rs.getString(8)));
-				client.setSex(rs.getString(9));
-				client.setAddress(rs.getString(10));
-				client.setAmount(rs.getBigDecimal(11));
+				client.setPwd(rs.getString(2));
+				client.setEmail(rs.getString(3));
+				client.setName(rs.getString(4));
+				client.setBirDate(rs.getDate(5));
+				client.setSex(rs.getString(6));
 				clients.add(client);
 			}
 		} catch (SQLException ex) {
@@ -53,25 +45,18 @@ public class ClientDao {
 	// 用于修改的查询
 	public Client queryM(Client client2) {
 		Client client = null;
-		String sql = "select * from tb_client where id=" + client2.getId() + "";
+		String sql = "select * from client where id=" + client2.getId() + "";
 		System.out.println("修改时的SQL：" + sql);
 		ResultSet rs = conn.executeQuery(sql);
 		try {
 			while (rs.next()) {
 				client = new Client();
 				client.setId(rs.getString(1));
-				ClientType ct = new ClientType();
-				ct.setId(rs.getString(2));
-				client.setClientType(ct);
-				client.setIdNum(rs.getString(3));
-				client.setPwd(rs.getString(4));
-				client.setPhone(rs.getString(5));
-				client.setEmail(rs.getString(6));
-				client.setName(rs.getString(7));
-				client.setAge(Integer.parseInt(rs.getString(8)));
-				client.setSex(rs.getString(9));
-				client.setAddress(rs.getString(10));
-				client.setAmount(rs.getBigDecimal(11));
+				client.setPwd(rs.getString(2));
+				client.setEmail(rs.getString(3));
+				client.setName(rs.getString(4));
+				client.setBirDate(rs.getDate(5));
+				client.setSex(rs.getString(6));
 			}
 		} catch (SQLException ex) {
 		}
@@ -83,13 +68,10 @@ public class ClientDao {
 	public boolean insert(Client client) {
 		String sql = "";
 		int falg = 0;
-
-		sql = "Insert into tb_client values('" + client.getId() + "','"
-				+ client.getClientType().getId() + "','" + client.getIdNum()
-				+ "','" + client.getPwd() + "','" + client.getPhone() + "','"
-				+ client.getEmail() + "','" + client.getName() + "','"
-				+ client.getAge() + "','" + client.getSex() + "','"
-				+ client.getAddress() + "','" + client.getAmount() + "'" + ")";
+		sql = "Insert into client values('" + client.getId() + "','"
+				+ client.getPwd() + "','" + client.getEmail() + "','"
+				+ client.getName() + "','" + client.getBirDate() + "','"
+				+ client.getSex() + "'" + ");";
 		falg = conn.executeUpdate(sql);
 		System.out.println("添加SQL：" + sql);
 		conn.close();
@@ -111,16 +93,13 @@ public class ClientDao {
 	}
 
 	// 修改数据
-	public boolean update(Client client) {
-		String sql = "update tb_client set ct_id='"
-				+ client.getClientType().getId() + "',id_num='"
-				+ client.getIdNum() + "',pwd='" + client.getPwd() + "',phone='"
-				+ client.getPhone() + "',email='" + client.getEmail()
-				+ "',name='" + client.getName() + "',age='" + client.getAge()
-				+ "',sex='" + client.getSex() + "',address='"
-				+ client.getAddress() + "',amount='" + client.getAmount()
-				+ "' " + "where id='" + client.getId() + "'";
-
+	public boolean update(String id, Client client) {
+		String sql = "";
+		sql = "update client set id='" + client.getId() + "', pwd='"
+				+ client.getPwd() + "',email='" + client.getEmail() + "', name='"
+				+ client.getName() + "', birthDay='"
+				+ client.getBirDate().toString() + "',sex='" + client.getSex()
+				+ "'  where id='" + id + "';";
 		int falg = conn.executeUpdate(sql);
 		System.out.println("修改数据时的SQL：" + sql);
 		conn.close();
@@ -131,12 +110,12 @@ public class ClientDao {
 
 	// 删除数据
 	public boolean delete(Client client) {
-		String sql_1 = "SELECT * FROM tb_airport WHERE id=" + client.getId()
+		String sql_1 = "SELECT * FROM client WHERE id=" + client.getId()
 				+ "";
 		ResultSet rs = conn.executeQuery(sql_1);
 		try {
 			if (rs.next()) {
-				String sql = "Delete from tb_airport where id="
+				String sql = "Delete from client where id="
 						+ client.getId() + "";
 				conn.executeUpdate(sql);
 				System.out.println("删除时的SQL：" + sql);

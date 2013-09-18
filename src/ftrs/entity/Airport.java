@@ -22,6 +22,4 @@ public class Airport {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
 }

@@ -1,7 +1,7 @@
 package ftrs.action;
 
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import ftrs.dao.ClientDao;
 import ftrs.entity.Client;
-import ftrs.entity.ClientType;
-
 /**
  * Servlet implementation class ClientAction
  */
@@ -45,19 +43,12 @@ public class ClientAction extends HttpServlet {
 	public void regist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Client client = new Client();
-		client.setAddress(request.getParameter("address"));
-		client.setAge(Integer.parseInt(request.getParameter("age")));
-		client.setAmount(new BigDecimal(0));
-		ClientType ct = new ClientType();
-		ct.setId("123");
-		client.setClientType(ct);
 		client.setEmail(request.getParameter("email"));
 		client.setId(request.getParameter("id"));
-		client.setIdNum(request.getParameter("idNum"));
 		client.setName(request.getParameter("name"));
-		client.setPhone(request.getParameter("phone"));
 		client.setPwd(request.getParameter("pwd"));
 		client.setSex(request.getParameter("sex"));
+		client.setBirDate(Date.valueOf(request.getParameter("birthDay")));
 
 		// insert
 		boolean success = clientDao.insert(client);
