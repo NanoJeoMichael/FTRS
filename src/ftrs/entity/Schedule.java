@@ -1,11 +1,11 @@
 package ftrs.entity;
 
-import java.sql.Time;
+import java.sql.Date;
 
 public class Schedule {
 	String id;
 	Flight flight;
-	Time scheduleTime;
+	Date goDate;
 	String status;
 	public String getId() {
 		return id;
@@ -19,11 +19,11 @@ public class Schedule {
 	public void setFlight(Flight flight) {
 		this.flight = flight;
 	}
-	public Time getScheduleTime() {
-		return scheduleTime;
+	public Date getGoDate() {
+		return goDate;
 	}
-	public void setScheduleTime(Time scheduleTime) {
-		this.scheduleTime = scheduleTime;
+	public void setGoDate(Date goDate) {
+		this.goDate = goDate;
 	}
 	public String getStatus() {
 		return status;

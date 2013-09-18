@@ -1,13 +1,12 @@
 package ftrs.entity;
 
 public class Company {
-	private String id;
-	private String name;
-	private String address;
-	public String getId() {
+	int id;
+	String name;
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -16,11 +15,4 @@ public class Company {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
 }

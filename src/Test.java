@@ -10,8 +10,6 @@ import ftrs.entity.Client;
 public class Test {
 	public static void testAirport() {
 		Airport airport = new Airport();
-		airport.setId("12345678");
-		airport.setAddress("江西省南昌市");
 		airport.setName("江西机场");
 
 		// insert
@@ -26,10 +24,8 @@ public class Test {
 		for (int i = 0; i < airports.size(); i++) {
 			System.out.println(airports.get(i).getId());
 			System.out.println(airports.get(i).getName());
-			System.out.println(airports.get(i).getAddress());
 		}
 		// update
-		airport.setAddress("江西省南昌市南昌区");
 		if (airportDao.update(airport))
 			System.out.println("Update success!");
 		else
@@ -39,7 +35,6 @@ public class Test {
 		for (int i = 0; i < airports.size(); i++) {
 			System.out.println(airports.get(i).getId());
 			System.out.println(airports.get(i).getName());
-			System.out.println(airports.get(i).getAddress());
 		}
 		// delete
 		if (airportDao.delete(airport))
@@ -51,7 +46,6 @@ public class Test {
 		for (int i = 0; i < airports.size(); i++) {
 			System.out.println(airports.get(i).getId());
 			System.out.println(airports.get(i).getName());
-			System.out.println(airports.get(i).getAddress());
 		}
 	}
 

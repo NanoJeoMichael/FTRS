@@ -3,41 +3,41 @@ package ftrs.entity;
 import java.sql.Timestamp;
 
 public class ScheduleChange {
-	String id;
-	Schedule originSchedule;
-	Timestamp time;
-	String reason;
-	String type;
+	Schedule schedule;
+	Timestamp changeTime;
+	Manager manager;
+	String changeType;
+	String changeReason;
 	String remark;
-	public String getId() {
-		return id;
+	public Schedule getSchedule() {
+		return schedule;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
 	}
-	public Schedule getOriginSchedule() {
-		return originSchedule;
+	public Timestamp getChangeTime() {
+		return changeTime;
 	}
-	public void setOriginSchedule(Schedule originSchedule) {
-		this.originSchedule = originSchedule;
+	public void setChangeTime(Timestamp changeTime) {
+		this.changeTime = changeTime;
 	}
-	public Timestamp getTime() {
-		return time;
+	public Manager getManager() {
+		return manager;
 	}
-	public void setTime(Timestamp time) {
-		this.time = time;
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
-	public String getReason() {
-		return reason;
+	public String getChangeType() {
+		return changeType;
 	}
-	public void setReason(String reason) {
-		this.reason = reason;
+	public void setChangeType(String changeType) {
+		this.changeType = changeType;
 	}
-	public String getType() {
-		return type;
+	public String getChangeReason() {
+		return changeReason;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setChangeReason(String changeReason) {
+		this.changeReason = changeReason;
 	}
 	public String getRemark() {
 		return remark;

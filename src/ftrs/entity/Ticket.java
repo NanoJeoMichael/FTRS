@@ -3,22 +3,22 @@ package ftrs.entity;
 import java.math.BigDecimal;
 
 public class Ticket {
-	private String id;
-	private Schedule shcecule;
-	private int seat;
-	private SeatType seatType;
-	private BigDecimal price;
+	String id;
+	Schedule schedule;
+	int seat;
+	String status;
+	BigDecimal price;
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Schedule getShcecule() {
-		return shcecule;
+	public Schedule getSchedule() {
+		return schedule;
 	}
-	public void setShcecule(Schedule shcecule) {
-		this.shcecule = shcecule;
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
 	}
 	public int getSeat() {
 		return seat;
@@ -26,11 +26,11 @@ public class Ticket {
 	public void setSeat(int seat) {
 		this.seat = seat;
 	}
-	public SeatType getSeatType() {
-		return seatType;
+	public String getStatus() {
+		return status;
 	}
-	public void setSeatType(SeatType seatType) {
-		this.seatType = seatType;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public BigDecimal getPrice() {
 		return price;

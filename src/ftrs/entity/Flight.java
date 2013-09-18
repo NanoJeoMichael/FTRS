@@ -1,48 +1,56 @@
 package ftrs.entity;
 
-import java.sql.Timestamp;
+import java.sql.Time;
 
 public class Flight {
-	private String id;
-	private String comId;
-	private Timestamp depdate;
-	private Timestamp reachdate;
-	private Airport deport;
-	private String planeType;
+	String id;
+	Time goTime;
+	Time reachTime;
+	String type;
+	Airport reachAirport;
+	Airport goAirport;
+	Company company;
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getComId() {
-		return comId;
+	public Time getGoTime() {
+		return goTime;
 	}
-	public void setComId(String comId) {
-		this.comId = comId;
+	public void setGoTime(Time goTime) {
+		this.goTime = goTime;
 	}
-	public Timestamp getDepdate() {
-		return depdate;
+	public Time getReachTime() {
+		return reachTime;
 	}
-	public void setDepdate(Timestamp depdate) {
-		this.depdate = depdate;
+	public void setReachTime(Time reachTime) {
+		this.reachTime = reachTime;
 	}
-	public Timestamp getReachdate() {
-		return reachdate;
+	public String getType() {
+		return type;
 	}
-	public void setReachdate(Timestamp reachdate) {
-		this.reachdate = reachdate;
+	public void setType(String type) {
+		this.type = type;
 	}
-	public Airport getDeport() {
-		return deport;
+	public Airport getReachAirport() {
+		return reachAirport;
 	}
-	public void setDeport(Airport deport) {
-		this.deport = deport;
+	public void setReachAirport(Airport reachAirport) {
+		this.reachAirport = reachAirport;
 	}
-	public String getPlaneType() {
-		return planeType;
+	public Airport getGoAirport() {
+		return goAirport;
 	}
-	public void setPlaneType(String planeType) {
-		this.planeType = planeType;
+	public void setGoAirport(Airport goAirport) {
+		this.goAirport = goAirport;
 	}
+	public Company getCompany() {
+		return company;
+	}
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+	
 }

@@ -1,16 +1,14 @@
 package ftrs.entity;
 
 public class Order {
-	private String id;
-	private Client client;
-	private int status;
-	private String idNum;
-	private Ticket ticket;
-	public String getId() {
-		return id;
+	Ticket ticket;
+	Client client;
+	String status;
+	public Ticket getTicket() {
+		return ticket;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
 	}
 	public Client getClient() {
 		return client;
@@ -18,23 +16,11 @@ public class Order {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
-	}
-	public String getIdNum() {
-		return idNum;
-	}
-	public void setIdNum(String idNum) {
-		this.idNum = idNum;
-	}
-	public Ticket getTicket() {
-		return ticket;
-	}
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
 	}
 	
 }

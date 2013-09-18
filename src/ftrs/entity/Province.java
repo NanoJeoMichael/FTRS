@@ -1,9 +1,8 @@
 package ftrs.entity;
 
-public class SeatType {
+public class Province {
 	int id;
 	String name;
-	String dec;
 	public int getId() {
 		return id;
 	}
@@ -15,11 +14,5 @@ public class SeatType {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getDec() {
-		return dec;
-	}
-	public void setDec(String dec) {
-		this.dec = dec;
 	}
 }

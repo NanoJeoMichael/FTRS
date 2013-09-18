@@ -5,67 +5,64 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import ftrs.entity.*;
+import ftrs.entity.Company;
 import ftrs.tools.ConnectDB;
 
-public class AirportDao {
+public class CompanyDao {
 	private ConnectDB conn = new ConnectDB();
 
 	// 查询数据
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Collection query(String strif) {
-		Airport airport = null;
-		Collection airportColl = new ArrayList<Airport>();
+		Company company = null;
+		Collection companys = new ArrayList<Company>();
 		String sql = "";
 		if (strif != "all" && strif != null && strif != "") {
-			sql = "select * from airport where " + strif + "";
+			sql = "select * from company where " + strif + "";
 		} else {
-			sql = "select * from airport";
+			sql = "select * from company";
 		}
 		ResultSet rs = conn.executeQuery(sql);
 		try {
 			while (rs.next()) {
-				airport = new Airport();
-				airport.setId(rs.getInt(1));
-				airport.setName(rs.getString(2));
-				City city = new City();
-				city.setId(Integer.parseInt(rs.getString(3)));
-				airport.setCity(city);
-				airportColl.add(airport);
+				company = new Company();
+				company.setId(rs.getInt(1));
+				company.setName(rs.getString(2));		
+				companys.add(company);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		conn.close();
-		return airportColl;
+		return companys;
 	}
 
 	// 用于修改的查询
-	public Airport queryM(Airport airport) {
-		Airport airport2 = null;
-		String sql = "select * from airport where id=" + airport.getId()
+	@SuppressWarnings("null")
+	public Company queryM(Company company) {
+		Company company2 = null;
+		String sql = "select * from company where id=" + company.getId()
 				+ "";
 		System.out.println("修改时的SQL：" + sql);
 		ResultSet rs = conn.executeQuery(sql);
 		try {
 			while (rs.next()) {
-				airport2 = new Airport();
-				airport2.setId(rs.getInt(1));
-				airport2.setName(rs.getString(2));
+				company2.setId(rs.getInt(1));
+				company2.setName(rs.getString(2));
 			}
 		} catch (SQLException ex) {
 		}
 		conn.close();
-		return airport2;
+		return company2;
 	}
 
 	// 添加数据
-	public boolean insert(Airport airport) {
+	public boolean insert(Company company) {
 		String sql = "";
 		int falg = 0;
 
-		sql = "Insert into airport values('" + airport.getId() + "','"
-				+ airport.getName() + "','" + airport.getCity().getId() + "')";
+		sql = "Insert into company values('" + company.getId() + "','"
+				+ company.getName() +  "')";
 		falg = conn.executeUpdate(sql);
 		System.out.println("添加SQL：" + sql);
 		conn.close();
@@ -76,10 +73,10 @@ public class AirportDao {
 	}
 
 	// 修改数据
-	public boolean update(Airport airport) {
-		String sql = "Update airport set name='" + airport.getName()
-				+ "', address='" + airport.getCity().getId() + "' where id='"
-				+ airport.getId() + "'";
+	public boolean update(Company company) {
+		String sql = "Update company set name='" + company.getName()
+				+ "' where id='"
+				+ company.getId() + "'";
 		int falg = conn.executeUpdate(sql);
 		System.out.println("修改数据时的SQL：" + sql);
 		conn.close();
@@ -89,14 +86,14 @@ public class AirportDao {
 	}
 
 	// 删除数据
-	public boolean delete(Airport airport) {
-		String sql_1 = "SELECT * FROM airport WHERE id="
-				+ airport.getId() + "";
+	public boolean delete(Company company) {
+		String sql_1 = "SELECT * FROM company WHERE id="
+				+ company.getId() + "";
 		ResultSet rs = conn.executeQuery(sql_1);
 		try {
 			if (rs.next()) {
 				String sql = "Delete from airport where id="
-						+ airport.getId() + "";
+						+ company.getId() + "";
 				conn.executeUpdate(sql);
 				System.out.println("删除时的SQL：" + sql);
 			}
@@ -107,5 +104,4 @@ public class AirportDao {
 		}
 		return true;
 	}
-
 }

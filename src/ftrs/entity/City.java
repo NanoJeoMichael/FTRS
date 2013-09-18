@@ -1,9 +1,9 @@
 package ftrs.entity;
 
-public class Airport {
-	private int id;
-	private String name;
-	private City city;
+public class City {
+	int id;
+	String name;
+	Province province;
 	public int getId() {
 		return id;
 	}
@@ -16,10 +16,10 @@ public class Airport {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public City getCity() {
-		return city;
+	public Province getProvince() {
+		return province;
 	}
-	public void setCity(City city) {
-		this.city = city;
+	public void setProvince(Province province) {
+		this.province = province;
 	}
 }

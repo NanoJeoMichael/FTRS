@@ -4,30 +4,30 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class OrderDetails {
-	String id;
-	Timestamp startTime;
-	Timestamp settleTime;
+	Order order;
+	Timestamp addTime;
+	Timestamp stockTime;
 	Timestamp dueTime;
 	BigDecimal settleMoney;
-	double discount;
+	float discount;
 	String remark;
-	public String getId() {
-		return id;
+	public Order getOrder() {
+		return order;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
-	public Timestamp getStartTime() {
-		return startTime;
+	public Timestamp getAddTime() {
+		return addTime;
 	}
-	public void setStartTime(Timestamp startTime) {
-		this.startTime = startTime;
+	public void setAddTime(Timestamp addTime) {
+		this.addTime = addTime;
 	}
-	public Timestamp getSettleTime() {
-		return settleTime;
+	public Timestamp getStockTime() {
+		return stockTime;
 	}
-	public void setSettleTime(Timestamp settleTime) {
-		this.settleTime = settleTime;
+	public void setStockTime(Timestamp stockTime) {
+		this.stockTime = stockTime;
 	}
 	public Timestamp getDueTime() {
 		return dueTime;
@@ -41,10 +41,10 @@ public class OrderDetails {
 	public void setSettleMoney(BigDecimal settleMoney) {
 		this.settleMoney = settleMoney;
 	}
-	public double getDiscount() {
+	public float getDiscount() {
 		return discount;
 	}
-	public void setDiscount(double discount) {
+	public void setDiscount(float discount) {
 		this.discount = discount;
 	}
 	public String getRemark() {

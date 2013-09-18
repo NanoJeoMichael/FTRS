@@ -1,50 +1,36 @@
 package ftrs.entity;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class OrderChange {
-	String id;
-	Employee employee;
 	Client client;
-	Date date;
-	String type;
-	String reason;
+	Order order;
+	Timestamp changeTime;
+	String changeType;
 	String remark;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public Employee getEmployee() {
-		return employee;
-	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 	public Client getClient() {
 		return client;
 	}
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	public Date getDate() {
-		return date;
+	public Order getOrder() {
+		return order;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
-	public String getType() {
-		return type;
+	public Timestamp getChangeTime() {
+		return changeTime;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setChangeTime(Timestamp changeTime) {
+		this.changeTime = changeTime;
 	}
-	public String getReason() {
-		return reason;
+	public String getChangeType() {
+		return changeType;
 	}
-	public void setReason(String reason) {
-		this.reason = reason;
+	public void setChangeType(String changeType) {
+		this.changeType = changeType;
 	}
 	public String getRemark() {
 		return remark;
@@ -52,4 +38,5 @@ public class OrderChange {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	
 }
