@@ -19,7 +19,7 @@ import ftrs.entity.Client;
 public class ClientAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private ClientDao clientDao = null; // 声明ManagerDAO的对象
+	private ClientDao clientDao = null;
 
 	public ClientAction() {
 		this.clientDao = new ClientDao();

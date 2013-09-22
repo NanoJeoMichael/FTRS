@@ -50,7 +50,7 @@ public class OrderdetailsDao {
 	// 用于修改的查询
 	public OrderDetails queryM(OrderDetails orderDetails2) {
 		OrderDetails orderDetails = null;
-		String sql = "select * from orderdetails where id="
+		String sql = "select * from orderdetails where order_ticket_id="
 				+ orderDetails2.getOrder().getTicket().getId() + "";
 		System.out.println("修改时的SQL：" + sql);
 		ResultSet rs = conn.executeQuery(sql);

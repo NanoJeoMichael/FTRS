@@ -18,37 +18,26 @@ USE `ftrs`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `flight`
+-- Table structure for table `company`
 --
 
-DROP TABLE IF EXISTS `flight`;
+DROP TABLE IF EXISTS `company`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `flight` (
-  `id` varchar(20) NOT NULL,
-  `goTime` time DEFAULT NULL,
-  `reachTime` time DEFAULT NULL,
-  `type` varchar(256) DEFAULT NULL,
-  `reach_airport` int(20) NOT NULL,
-  `go_airport` int(20) NOT NULL,
-  `company_id` int(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_flight_airport1_idx` (`reach_airport`),
-  KEY `fk_flight_airport2_idx` (`go_airport`),
-  KEY `fk_flight_company1_idx` (`company_id`),
-  CONSTRAINT `fk_flight_airport1` FOREIGN KEY (`reach_airport`) REFERENCES `airport` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_flight_airport2` FOREIGN KEY (`go_airport`) REFERENCES `airport` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_flight_company1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `company` (
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `flight`
+-- Dumping data for table `company`
 --
 
-LOCK TABLES `flight` WRITE;
-/*!40000 ALTER TABLE `flight` DISABLE KEYS */;
-/*!40000 ALTER TABLE `flight` ENABLE KEYS */;
+LOCK TABLES `company` WRITE;
+/*!40000 ALTER TABLE `company` DISABLE KEYS */;
+INSERT INTO `company` VALUES ('上海航空公司'),('东星航空有限公司'),('中国南方航空(集团)公司'),('中国国际航空公司'),('四川航空股份有限公司'),('大新华航空有限公司'),('奥凯航空'),('海航集团祥鹏航空公司'),('鹰联航空公司');
+/*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -60,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-18 11:05:01
+-- Dump completed on 2013-09-22 12:20:10

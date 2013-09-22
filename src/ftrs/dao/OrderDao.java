@@ -30,12 +30,13 @@ public class OrderDao {
 			while (rs.next()) {
 				order = new Order();
 				Ticket ticket = new Ticket();
-				ticket.setId(rs.getString(1));
+				ticket.setId(rs.getString("ticket_id"));
 				order.setTicket(ticket);
+				order.setIdNum(rs.getString("idNum"));
 				Client client = new Client();
-				client.setId(rs.getString(2));
+				client.setId(rs.getString("client_id"));
 				order.setClient(client);
-				order.setStatus(rs.getString(3));
+				order.setStatus(rs.getString("status"));
 				orders.add(order);
 			}
 		} catch (SQLException ex) {
@@ -48,7 +49,7 @@ public class OrderDao {
 	// 用于修改的查询
 	public Order queryM(Order order2) {
 		Order order = null;
-		String sql = "select * from order where id="
+		String sql = "select * from order where ticket_id="
 				+ order2.getTicket().getId() + "";
 		System.out.println("修改时的SQL：" + sql);
 		ResultSet rs = conn.executeQuery(sql);
@@ -56,12 +57,13 @@ public class OrderDao {
 			while (rs.next()) {
 				order = new Order();
 				Ticket ticket = new Ticket();
-				ticket.setId(rs.getString(1));
+				ticket.setId(rs.getString("ticket_id"));
 				order.setTicket(ticket);
+				order.setIdNum(rs.getString("idNum"));
 				Client client = new Client();
-				client.setId(rs.getString(2));
+				client.setId(rs.getString("client_id"));
 				order.setClient(client);
-				order.setStatus(rs.getString(3));
+				order.setStatus(rs.getString("status"));
 			}
 		} catch (SQLException ex) {
 		}
@@ -73,9 +75,9 @@ public class OrderDao {
 	public boolean insert(Order order) {
 		String sql = "";
 		int falg = 0;
-		sql = "insert into order values('%s','%s','%s');";
-		sql = String.format(sql, order.getTicket().getId(), order.getClient()
-				.getId(), order.getStatus());
+		sql = "insert into order values('%s','%s','%s','%s');";
+		sql = String.format(sql, order.getTicket().getId(), order.getIdNum(),
+				order.getClient().getId(), order.getStatus());
 		falg = conn.executeUpdate(sql);
 		System.out.println("添加SQL：" + sql);
 		conn.close();
@@ -88,9 +90,9 @@ public class OrderDao {
 	// 修改数据
 	public boolean update(String id, Order order) {
 		String sql = "";
-		sql = "update order set ticket_id='%s',client_id='%s',status='%s' where id='%s';";
-		sql = String.format(sql, order.getTicket().getId(), order.getClient()
-				.getId(), order.getStatus(),id);
+		sql = "update order set ticket_id='%s',idNum='%s',client_id='%s',status='%s' where id='%s';";
+		sql = String.format(sql, order.getTicket().getId(), order.getIdNum(),
+				order.getClient().getId(), order.getStatus(), id);
 		int falg = conn.executeUpdate(sql);
 		System.out.println("修改数据时的SQL：" + sql);
 		conn.close();
@@ -101,12 +103,13 @@ public class OrderDao {
 
 	// 删除数据
 	public boolean delete(Order order) {
-		String sql_1 = "SELECT * FROM order WHERE id=" + order.getTicket().getId() + "";
+		String sql_1 = "SELECT * FROM order WHERE ticket_id="
+				+ order.getTicket().getId() + "";
 		ResultSet rs = conn.executeQuery(sql_1);
 		try {
 			if (rs.next()) {
-				String sql = "Delete from order where id=" + order.getTicket().getId()
-						+ "";
+				String sql = "Delete from order where ticket_id="
+						+ order.getTicket().getId() + "";
 				conn.executeUpdate(sql);
 				System.out.println("删除时的SQL：" + sql);
 			} else

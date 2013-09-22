@@ -3,6 +3,13 @@ package ftrs.entity;
 public class Order {
 	Ticket ticket;
 	Client client;
+	String idNum;
+	public String getIdNum() {
+		return idNum;
+	}
+	public void setIdNum(String idNum) {
+		this.idNum = idNum;
+	}
 	String status;
 	public Ticket getTicket() {
 		return ticket;

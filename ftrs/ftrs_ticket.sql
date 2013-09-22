@@ -18,28 +18,39 @@ USE `ftrs`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `manager`
+-- Table structure for table `ticket`
 --
 
-DROP TABLE IF EXISTS `manager`;
+DROP TABLE IF EXISTS `ticket`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `manager` (
-  `id` varchar(30) NOT NULL,
-  `pwd` varchar(45) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `email` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `ticket` (
+  `id` varchar(100) NOT NULL,
+  `status` varchar(10) DEFAULT NULL,
+  `price` decimal(10,0) DEFAULT NULL,
+  `startCity` varchar(45) DEFAULT NULL,
+  `lastCity` varchar(45) DEFAULT NULL,
+  `goDate` date DEFAULT NULL,
+  `airlineCode` varchar(50) DEFAULT NULL,
+  `seat` int(11) DEFAULT NULL,
+  `seatType` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cc_t_idx` (`startCity`),
+  KEY `ccc_t_idx` (`lastCity`),
+  KEY `airccc_fk_idx` (`airlineCode`),
+  CONSTRAINT `airccc_fk` FOREIGN KEY (`airlineCode`) REFERENCES `airlinetype` (`code`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `ccc_t` FOREIGN KEY (`lastCity`) REFERENCES `city` (`Abbreviation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `cc_t` FOREIGN KEY (`startCity`) REFERENCES `city` (`Abbreviation`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `manager`
+-- Dumping data for table `ticket`
 --
 
-LOCK TABLES `manager` WRITE;
-/*!40000 ALTER TABLE `manager` DISABLE KEYS */;
-/*!40000 ALTER TABLE `manager` ENABLE KEYS */;
+LOCK TABLES `ticket` WRITE;
+/*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-18 11:05:02
+-- Dump completed on 2013-09-22 12:20:11

@@ -18,31 +18,33 @@ USE `ftrs`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `client`
+-- Table structure for table `orderchange`
 --
 
-DROP TABLE IF EXISTS `client`;
+DROP TABLE IF EXISTS `orderchange`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `client` (
-  `id` varchar(30) NOT NULL,
-  `pwd` varchar(20) DEFAULT NULL,
-  `email` varchar(256) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `birthDay` date DEFAULT NULL,
-  `sex` varchar(4) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `orderchange` (
+  `client_id` varchar(30) NOT NULL,
+  `order_ticket_id` varchar(100) NOT NULL,
+  `changeTime` datetime NOT NULL,
+  `changeType` varchar(10) DEFAULT NULL,
+  `remark` text,
+  PRIMARY KEY (`changeTime`,`client_id`,`order_ticket_id`),
+  KEY `fk_orderChange_client1_idx` (`client_id`),
+  KEY `fk_orderChange_order1_idx` (`order_ticket_id`),
+  CONSTRAINT `fk_orderChange_client1` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_orderChange_order1` FOREIGN KEY (`order_ticket_id`) REFERENCES `order` (`ticket_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `client`
+-- Dumping data for table `orderchange`
 --
 
-LOCK TABLES `client` WRITE;
-/*!40000 ALTER TABLE `client` DISABLE KEYS */;
-INSERT INTO `client` VALUES ('002','258456','NanoJeoMichael@hotmail.com','Nano.Michael','1992-09-07','男');
-/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+LOCK TABLES `orderchange` WRITE;
+/*!40000 ALTER TABLE `orderchange` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderchange` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-18 11:05:02
+-- Dump completed on 2013-09-22 12:20:11

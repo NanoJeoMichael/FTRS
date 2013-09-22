@@ -18,33 +18,33 @@ USE `ftrs`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `orderdetails`
+-- Table structure for table `order`
 --
 
-DROP TABLE IF EXISTS `orderdetails`;
+DROP TABLE IF EXISTS `order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orderdetails` (
-  `order_ticket_id` varchar(100) NOT NULL,
-  `addTime` datetime DEFAULT NULL,
-  `stockTime` datetime DEFAULT NULL,
-  `dueTime` datetime DEFAULT NULL,
-  `settleMoney` decimal(10,0) DEFAULT NULL,
-  `discount` float DEFAULT NULL,
-  `remark` text,
-  PRIMARY KEY (`order_ticket_id`),
-  KEY `fk_orderDetails_order1_idx` (`order_ticket_id`),
-  CONSTRAINT `fk_orderDetails_order1` FOREIGN KEY (`order_ticket_id`) REFERENCES `order` (`ticket_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `order` (
+  `ticket_id` varchar(100) NOT NULL,
+  `clientId` varchar(30) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
+  `idNum` varchar(45) DEFAULT NULL,
+  `clientName` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`ticket_id`),
+  KEY `cc_fk_idx` (`clientId`),
+  KEY `fk_order_ticket1_idx` (`ticket_id`),
+  CONSTRAINT `cc_fk` FOREIGN KEY (`clientId`) REFERENCES `client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `ticket_fk` FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `orderdetails`
+-- Dumping data for table `order`
 --
 
-LOCK TABLES `orderdetails` WRITE;
-/*!40000 ALTER TABLE `orderdetails` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orderdetails` ENABLE KEYS */;
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-18 11:05:02
+-- Dump completed on 2013-09-22 12:20:11

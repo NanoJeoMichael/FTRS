@@ -6,45 +6,7 @@
 %>
 <!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript">
-	function checkRegist() {
-		if (form1.name.value == "") {
-			var x = document.getElementById("rname");
-			form1.name.placeholder="昵称不能为空";
-			x.className += " error";
-			return false;
-		}
-		if (form1.pwd.value == "") {
-			var x = document.getElementById("rpwd");
-			form1.pwd.placeholder="密码不能为空";
-			x.className += " error";
-			return false;
-		}
-		if (form1.pwdConfirm.value == "") {
-			var x = document.getElementById("rcpwd");
-			form1.pwdConfirm.placeholder="请确认你的密码";
-			x.className += " error";
-			return false;
-		}
-		if (form1.email.value=="") {
-			var x = document.getElementById("remail");
-			form1.email.placeholder="邮箱不能为空";
-			x.className += " error";
-			return false;
-		}
-		if (form1.birthDay.value==""){
-			var x = document.getElementById("rdate");
-			form1.birthDay.placeholder="生日不能为空";
-			x.className += " error";
-			return false;
-		}
-		
-	}
-</script>
-</head>
 <body>
-	<%@ include file="msgBox.jsp"%>
 	<!-- 导航条 -->
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -77,7 +39,7 @@
 							class="icon-user icon-large"></i><strong><%="  " + session.getAttribute("userName")%></strong></a>
 						<a class="btn btn-link" href="c_user.jsp"><i
 							class="icon-wrench"></i><small>&nbsp;设置</small></a> <a
-							onclick="confirm('你真的要退出吗？','index.jsp')" class="btn btn-link"><i
+							class="btn btn-link" href="index.jsp"><i
 							class="icon-off icon-black"></i><small>&nbsp;退出</small></a>
 					</div>
 					<%
@@ -149,12 +111,11 @@
 		</div>
 	</div>
 	<!-- 注册窗体 -->
-	<div id="register" class="modal hide fade" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
+	<div id="register" class="modal hide fade">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal"
-				aria-hidden="true">×</button>
-			<h4 id="myModalLabel">加入我们</h4>
+				aria-hidden="true">&times;</button>
+			<h3>加入我们</h3>
 		</div>
 		<div class="modal-body">
 			<form class="form-horizontal" action="ClientAction?action=regist"
@@ -226,9 +187,8 @@
 						<label class="control-label">出生日期</label>
 						<div class="controls">
 							<div class="input-append date form_datetime">
-								<input class="span3" type="text" value="" readonly
-									name="birthDay"> <span class="add-on"><i
-									class="icon-th"></i></span>
+								<input class="span3" type="text" value="" readonly> <span
+									class="add-on"><i class="icon-th"></i></span>
 							</div>
 							<script type="text/javascript">
 								$(".form_datetime").datetimepicker({
@@ -257,8 +217,8 @@
 						<!-- Multiple Checkboxes -->
 						<div class="controls">
 							<!-- Inline Checkboxes -->
-							<label class="checkbox inline"> <input type="checkbox" name="agree"
-								value="我已阅读并同意许可条款"> 我已阅读并同意许可条款
+							<label class="checkbox inline"> <input type="checkbox"
+								name="agree" value="我已阅读并同意许可条款"> 我已阅读并同意许可条款
 							</label>
 						</div>
 					</div>
@@ -267,14 +227,15 @@
 						<label class="control-label"></label>
 						<!-- Button -->
 						<div class="controls">
-							<button id="registBtn" type="submit" onclick="return checkRegist()" class="btn btn-success">注册</button>
+							<button id="registBtn" type="submit"
+								onclick="return checkRegist()" class="btn btn-success">注册</button>
 						</div>
 					</div>
 				</fieldset>
 			</form>
 		</div>
 		<div class="modal-footer">
-			<button class="btn btn-warning" data-dismiss="modal">取消</button>
+			<a href="#" class="btn btn-warning">取消</a>
 		</div>
 	</div>
 </body>

@@ -18,26 +18,31 @@ USE `ftrs`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `company`
+-- Table structure for table `client`
 --
 
-DROP TABLE IF EXISTS `company`;
+DROP TABLE IF EXISTS `client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `company` (
-  `id` int(20) NOT NULL,
-  `name` varchar(256) DEFAULT NULL,
+CREATE TABLE `client` (
+  `id` varchar(30) NOT NULL,
+  `pwd` varchar(20) DEFAULT NULL,
+  `email` varchar(256) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `birthDay` date DEFAULT NULL,
+  `sex` varchar(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `company`
+-- Dumping data for table `client`
 --
 
-LOCK TABLES `company` WRITE;
-/*!40000 ALTER TABLE `company` DISABLE KEYS */;
-/*!40000 ALTER TABLE `company` ENABLE KEYS */;
+LOCK TABLES `client` WRITE;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` VALUES ('002','258456','NanoJeoMichael@hotmail.com','Nano.Michael','1992-09-07','男');
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-18 11:05:01
+-- Dump completed on 2013-09-22 12:20:11
